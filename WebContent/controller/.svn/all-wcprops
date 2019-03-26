@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller
+END
+checkCompleteWithReason.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/checkCompleteWithReason.jsp
+END
+completeRollback.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/completeRollback.jsp
+END
+deleteSiteController.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/deleteSiteController.jsp
+END
+completeUpdateCtr.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/completeUpdateCtr.jsp
+END
+checkInsertAll.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/checkInsertAll.jsp
+END
+checkComplete.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/checkComplete.jsp
+END
+monthDataUpdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/monthDataUpdate.jsp
+END
+allDataUpdate.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/allDataUpdate.jsp
+END
+deletePlan.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/deletePlan.jsp
+END
+getJira.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/techweb/!svn/ver/38/RegularCheckUp/WebContent/controller/getJira.jsp
+END

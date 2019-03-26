@@ -1,0 +1,168 @@
+<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
+<%@page import="java.util.List"%>
+<%@page import="com.cubrid.checkup.vo.JobOpVo"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>정기점검 이력</title>
+<style type="text/css">
+.dataField {
+	font-size: x-small;
+	height: 20;
+}
+.searcher {
+	position: absolute; top: 25px; right: 10px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/tableList.css">
+<script type="text/javascript" src="../../js/myScript.js"></script>
+</head>
+<body>
+<%
+	// vo 만들어서 map에 넣을 준비 해주고
+	JobOpVo jobVo = new JobOpVo();
+	MainConSubVo mainVo = new MainConSubVo();
+	// map 도 만들어주고
+	Map<String, Object> inputMap = new HashMap<String, Object>();
+	
+	// 몇 년도 이력인지 알기 위해 받는 년도
+	int curYear = Integer.parseInt(request.getParameter("curYear"));
+	request.setAttribute("curYear", curYear);
+	
+	// 검색시 넘어올 데이터를 받는 변수
+	String searchColumn = request.getParameter("searchColumn");
+	String searchText = EncodingKorean.kor(request.getParameter("searchText"));
+	String category = null;
+	
+	/*
+		이제 여기에서 searchColumn이 무슨 값인지 확인을 해보자.
+		어떤 컬럼인지 확인 후 searchText를 같이 넣어서 던질 준비를 하자.
+	*/
+	if(searchColumn != null) {
+		if(searchColumn.equals("check_nm")) {
+	mainVo.setCheck_nm(searchText);
+	category = "점검 방식";
+		} else if(searchColumn.equals("job_date_complete")) {
+	jobVo.setUpd_date(searchText);
+	category = "완료 날짜";
+		} else if(searchColumn.equals("job_date_plan")) {
+	jobVo.setJob_date(searchText);
+	category = "예정 날짜";
+		} else if(searchColumn.equals("job_nm_plan")) {
+	jobVo.setJob_nm(searchText);
+	category = "점검 예정자";
+		} else if(searchColumn.equals("job_nm_complete")) {
+	jobVo.setReg_date(searchText);
+	category = "실제 점검자";
+		} else if(searchColumn.equals("cust_nm")) {
+	mainVo.setCust_nm(searchText);
+	category = "고객명";
+		} else if(searchColumn.equals("proc_nm")) {
+	mainVo.setProc_nm(searchText);
+	category = "사업명";
+		}
+	}
+	request.setAttribute("category", category);
+	request.setAttribute("searchText", searchText);
+	
+	// 그 다음, map에 넣어주자.
+	inputMap.put("jobVo", jobVo);
+	inputMap.put("mainVo", mainVo);
+	
+	// service 객체를 만들고 selectHistory() 호출하면 끝~
+	CheckUpServiceImpl service = new CheckUpServiceImpl();
+	Map<String, Object> map = service.selectHistory(curYear, inputMap);
+	@SuppressWarnings("unchecked")
+	List<JobOpVo> list = (List<JobOpVo>)map.get("jobLIst");
+	request.setAttribute("list", list);
+	// con_id 에 cust_nm을 넣자
+	// modify_yn 에 proc_nm을 넣자
+	// 실제 점검이 완료된 날짜	: Job_date
+	// 실제 점검자			: Job_nm
+	// 방문인지 원격인지		: Job_visit_remote
+	// 완료인지 아닌지		: Job_yn
+	// 원래의 점검 날짜		: Upd_date
+	// 원래의 점검자			: Reg_date
+%>
+	<div class="container">
+		<div class="printTitle">
+			<h4>
+				${curYear} 년도 정기점검 이력 &nbsp;
+				<c:choose>
+					<c:when test="${category != null}">
+						[ 검색조건 - category : ${category} / string : ${searchText}]
+					</c:when>
+					<c:otherwise>
+						[ 전체 ]
+					</c:otherwise>
+				</c:choose>
+			</h4>
+		</div>
+		<div class="searcher">
+			<select id="searchColumn">
+				<option value="">전체</option>
+				<option value="job_date_plan">예정 날짜</option>
+				<option value="job_date_complete">완료 날짜</option>
+				<option value="job_nm_plan">점검 예정자</option>
+				<option value="job_nm_complete">실제 점검자</option>
+				<option value="check_nm">점검 방식</option>
+				<option value="cust_nm">고객사</option>
+				<option value="proc_nm">사업명</option>
+			</select> <input type="text" id="searchText"> <input type="button" value="검색" onclick="searchEvent()">
+		</div>
+	</div>
+	<table id="tb1" border="1" cellspacing="0" width="100%">
+		<tr id="boardTitle" height="25px">
+			<td width="25%">고객사</td>
+			<td width="10%">점검 예정일</td>
+			<td width="10%">실제 점검일</td>
+			<td width="10%">점검방식</td>
+			<td width="10%">점검 예정자</td>
+			<td width="10%">실제 점검자</td>
+			<td width="25%">수정 사유</td>
+		</tr>
+		<c:set var="index" value="1"/>
+		<c:forEach var="vo" items="${list}">
+			<tr class="dataField">
+				<c:if test="${index==1}">
+					<td rowspan="${vo.con_year}">${vo.con_id}<br>[${vo.modify_yn}]<br><br>(${vo.con_year} 건)</td>
+				</c:if>
+				<c:choose>
+					<c:when test="${vo.job_yn=='Y'}">
+						<td>${vo.upd_date}</td>
+						<td>${vo.job_date}</td>
+					</c:when>
+					<c:when test="${vo.job_yn=='N'}">
+						<td>${vo.job_date}</td>
+						<td>-</td>
+					</c:when>
+				</c:choose>
+				<td>${vo.job_visit_remote}</td>
+				<c:choose>
+					<c:when test="${vo.job_yn=='Y'}">
+						<td>${vo.reg_date}</td>
+						<td>${vo.job_nm}</td>
+					</c:when>
+					<c:when test="${vo.job_yn=='N'}">
+						<td>${vo.job_nm}</td>
+						<td>-</td>
+					</c:when>
+				</c:choose>
+				<td>${vo.job_reason}</td>
+			</tr>
+			<c:set var="index" value="${index + 1}"/>
+			<c:if test="${index > vo.con_year}">
+				<c:set var="index" value="1"/>
+			</c:if>
+		</c:forEach>
+	</table>
+	<input type="hidden" id="curYear" value="${curYear}">
+</body>
+</html>

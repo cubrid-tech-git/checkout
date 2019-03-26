@@ -1,0 +1,60 @@
+#tb1 {
+	margin-right: 0px;
+	border-color: #9C9D99;
+	border-style: solid;
+	margin: 0px -3px -1px -1px; 
+}
+
+#domain {
+	color: grey;
+	font-weight: bold;
+}
+
+#boardTitle {
+	color: white;
+	background-color: #336699;
+	font-weight: bold;
+	text-align: center;
+	font-size: small;
+	height: 25px;
+}
+
+#boardTitle1 {
+	color: white;
+	background-color: #336699;
+	font-weight: bold;
+	text-align: center;
+	font-size: small;
+	height: 25px;
+}
+
+#searchAndLogin {
+	position: relative; left: 235%;
+	position: relative; top: -80px;
+	text-align: right;
+}
+
+#paging {
+	position: relative; left: 240px; bottom: 22px;
+}
+
+#header {
+	width: 300px;
+}
+
+#wrapper {
+	position: absolute; top: 92px;
+}
+
+.dataField {
+	font-size: x-small;
+}
+
+td {
+	height: 30px;
+	text-align: center;
+}
+
+/* table#tb1 {
+  border-collapse: collapse;
+} */
