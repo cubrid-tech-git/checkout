@@ -1,12 +1,12 @@
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>昏力 牧飘费矾</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>靷牅 旎姼搿る煬</title>
 </head>
 <body>
 <%
@@ -26,12 +26,12 @@
 
 	if(result == 0) {
 		out.println("<script>");
-		out.println("alert('昏力 角菩');");
+		out.println("alert('靷牅 鞁ろ尐');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else  if(result == 1){
 		out.println("<script>");
-		//out.println("alert('昏力 己傍');");
+		//out.println("alert('靷牅 靹标车');");
 		out.println("opener.location.reload();");
 		out.println("window.close();");
 		out.println("</script>");

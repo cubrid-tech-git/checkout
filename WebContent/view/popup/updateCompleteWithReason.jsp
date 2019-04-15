@@ -1,11 +1,10 @@
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 #wrapper {
@@ -27,7 +26,7 @@
 <%
 	String id = request.getParameter("id");
 	int seq = Integer.parseInt(request.getParameter("seq"));
-	String name = EncodingKorean.kor(request.getParameter("name"));
+	String name = request.getParameter("name");
 	String date = request.getParameter("date");
 	String originDate = request.getParameter("originDate");
 	String check_nm = request.getParameter("check_nm");
@@ -43,14 +42,14 @@
 <div id="wrapper">
 	<table id="">
 		<tr>
-			<td id="boardTitle" width="100px">¼öÁ¤»çÀ¯</td>
+			<td id="boardTitle" width="100px">ìˆ˜ì •ì‚¬ìœ </td>
 			<td>
 				<textarea rows="10" cols="22" id="job_reason"></textarea>
 			</td>
 		</tr>
 	</table>
-	<input type="button" value="µî·Ï" onclick="checkupCompleteWithReason('../../controller/checkCompleteWithReason.jsp')">
-	<input type="button" value="Ãë¼Ò" onclick="eventReset()">
+	<input type="button" value="ë“±ë¡" onclick="checkupCompleteWithReason('../../controller/checkCompleteWithReason.jsp')">
+	<input type="button" value="ì·¨ì†Œ" onclick="eventReset()">
 </div>
 	<input type="hidden" id="con_id" value="${con_id}">
 	<input type="hidden" id="con_year" value="${con_year}">

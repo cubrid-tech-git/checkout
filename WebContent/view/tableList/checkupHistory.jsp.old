@@ -1,16 +1,15 @@
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>정기점검 이력</title>
 <style type="text/css">
 .dataField {
@@ -38,7 +37,7 @@
 	
 	// 검색시 넘어올 데이터를 받는 변수
 	String searchColumn = request.getParameter("searchColumn");
-	String searchText = EncodingKorean.kor(request.getParameter("searchText"));
+	String searchText = request.getParameter("searchText");
 	String category = null;
 	
 	/*

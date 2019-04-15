@@ -1,8 +1,8 @@
 <%@page import="com.cubrid.checkup.dao.CheckupDaoImpl"%>
 <%@page import="com.cubrid.checkup.vo.MonthInfoVo"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String year = request.getParameter("curYear");
@@ -22,19 +22,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¿ùº° Á¡°Ë ÇöÈ²</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì›”ë³„ ì ê²€ í˜„í™©</title>
 <link rel="stylesheet" type="text/css" href="../../css/tableList.css">
 </head>
 <body>
 	<div style="text-align: center;">
-		<h2>${curYear}³â  ${month}¿ù ½ÇÀû</h2>
+		<h2>${curYear}ë…„  ${month}ì›” ì‹¤ì </h2>
 		<table id="tb1" width="370px">
 			<tr id="boardTitle">
-				<td>Á¡°ËÀÚ</td>
-				<td>¿¹Á¤</td>
-				<td>¿Ï·á</td>
-				<td>ÁøÇà·ü</td>
+				<td>ì ê²€ìž</td>
+				<td>ì˜ˆì •</td>
+				<td>ì™„ë£Œ</td>
+				<td>ì§„í–‰ë¥ </td>
 			</tr>
 			<c:forEach var="vo" items="${list}">
 				<tr>
@@ -46,7 +46,7 @@
 			</c:forEach>
 		</table>
 		<br>
-		<button onclick="self.close();">´Ý±â</button>
+		<button onclick="self.close();">ë‹«ê¸°</button>
 	</div>
 </body>
 </html>

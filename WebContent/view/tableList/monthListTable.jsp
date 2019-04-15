@@ -4,16 +4,16 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Month List</title>
 <link rel="stylesheet" type="text/css" href="../../css/tableList.css">
 <script type="text/javascript" src="../../js/myScript.js"></script>
-<!-- ∏∂øÏΩ∫ »Ÿ¿ª ¿ÃøÎ«ÿº≠ ºˆ∆Ú Ω∫≈©∑— ¿Ãµø«œ¥¬ jquery -->
+<!-- ÎßàÏö∞Ïä§ Ìú†ÏùÑ Ïù¥Ïö©Ìï¥ÏÑú ÏàòÌèâ Ïä§ÌÅ¨Î°§ Ïù¥ÎèôÌïòÎäî jquery -->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="../../js/jquery.mousewheel.js"></script>
 <script type="text/javascript">
@@ -44,24 +44,24 @@
 %>
 	<table id="tb1" border="1" cellspacing="0" width="1800px">
 		<tr id="boardTitle">
-			<td colspan="3">1ø˘</td>
-			<td colspan="3">2ø˘</td>
-			<td colspan="3">3ø˘</td>
-			<td colspan="3">4ø˘</td>
-			<td colspan="3">5ø˘</td>
-			<td colspan="3">6ø˘</td>
-			<td colspan="3">7ø˘</td>
-			<td colspan="3">8ø˘</td>
-			<td colspan="3">9ø˘</td>
-			<td colspan="3">10ø˘</td>
-			<td colspan="3">11ø˘</td>
-			<td colspan="3">12ø˘</td>
+			<td colspan="3">1Ïõî</td>
+			<td colspan="3">2Ïõî</td>
+			<td colspan="3">3Ïõî</td>
+			<td colspan="3">4Ïõî</td>
+			<td colspan="3">5Ïõî</td>
+			<td colspan="3">6Ïõî</td>
+			<td colspan="3">7Ïõî</td>
+			<td colspan="3">8Ïõî</td>
+			<td colspan="3">9Ïõî</td>
+			<td colspan="3">10Ïõî</td>
+			<td colspan="3">11Ïõî</td>
+			<td colspan="3">12Ïõî</td>
 		</tr>
 		<tr id="boardTitle">
 			<c:forEach var="loop" begin="1" end="12">
-				<td width="40px">πÊπÆ</td>
-				<td width="40px">ø¯∞›</td>
-				<td width="70px">Ω«¿˚</td>
+				<td width="40px">Î∞©Î¨∏</td>
+				<td width="40px">ÏõêÍ≤©</td>
+				<td width="70px">Ïã§Ï†Å</td>
 			</c:forEach>
 		</tr>
 		<tr id="boardTitle">
@@ -123,7 +123,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_1 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_1}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_1}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_1}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_1}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_1 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_1}', 'width=300, height=410')">${vo.job_nm_1}</a>
@@ -150,7 +150,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_2 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_2}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_2}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_2}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_2}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_2 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_2}', 'width=300, height=410')">${vo.job_nm_2}</a>
@@ -177,7 +177,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_3 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_3}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_3}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_3}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_3}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_3 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_3}', 'width=300, height=410')">${vo.job_nm_3}</a>
@@ -204,7 +204,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_4 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_4}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_4}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_4}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_4}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_4 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_4}', 'width=300, height=410')">${vo.job_nm_4}</a>
@@ -231,7 +231,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_5 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_5}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_5}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_5}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_5}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_5 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_5}', 'width=300, height=410')">${vo.job_nm_5}</a>
@@ -258,7 +258,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_6 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_6}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_6}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_6}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_6}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_6 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_6}', 'width=300, height=410')">${vo.job_nm_6}</a>
@@ -285,7 +285,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_7 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_7}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_7}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_7}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_7}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_7 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_7}', 'width=300, height=410')">${vo.job_nm_7}</a>
@@ -312,7 +312,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_8 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_8}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_8}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_8}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_8}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_8 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_8}', 'width=300, height=410')">${vo.job_nm_8}</a>
@@ -339,7 +339,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_9 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_9}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_9}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_9}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_9}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_9 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_9}', 'width=300, height=410')">${vo.job_nm_9}</a>
@@ -366,7 +366,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_10 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_10}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_10}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_10}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_10}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_10 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_10}', 'width=300, height=410')">${vo.job_nm_10}</a>
@@ -393,7 +393,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_11 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_11}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_11}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_11}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_11}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_11 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_11}', 'width=300, height=410')">${vo.job_nm_11}</a>
@@ -420,7 +420,7 @@
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${vo.job_yn_12 == 'N'}">
-									<input type="button" value="¿‘∑¬" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_12}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_12}', 'width=270, height=220')">
+									<input type="button" value="ÏûÖÎ†•" onclick="openPop('../popup/updateComplete.jsp?name=${vo.job_nm_12}&con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_12}', 'width=270, height=220')">
 								</c:when>
 								<c:when test="${vo.job_yn_12 == 'Y'}">
 									<a href="#" onclick="openPop('../popup/showComplete.jsp?con_id=${vo.con_id}&con_year=${vo.con_year}&year=${curYear}&date=${vo.job_date_12}', 'width=300, height=410')">${vo.job_nm_12}</a>

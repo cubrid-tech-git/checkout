@@ -2,20 +2,19 @@
 <%@page import="com.cubrid.checkup.vo.LoggingVo"%>
 <%@page import="com.cubrid.logging.CheckuploggingImpl"%>
 <%@page import="com.cubrid.logging.CheckupLogging"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¤±âÁ¡°Ë ÀÌ·Â</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì •ê¸°ì ê²€ ì´ë ¥</title>
 <style type="text/css">
 .dataField {
 	font-size: x-small;
@@ -30,7 +29,7 @@
 <script type="text/javascript">
 	onload = function() {
 		<%
-			//¸î ³âµµ ÀÌ·ÂÀÎÁö ¾Ë±â À§ÇØ ¹Ş´Â ³âµµ
+			//ëª‡ ë…„ë„ ì´ë ¥ì¸ì§€ ì•Œê¸° ìœ„í•´ ë°›ëŠ” ë…„ë„
 			String curYear = null;
 			if(request.getParameter("curYear") == null) {
 				curYear = Integer.toString(MyDate.currentYear());
@@ -50,29 +49,29 @@
 	List<String> yearList = service.selectYear();
 	request.setAttribute("yearList", yearList);
 	
-	// °Ë»ö½Ã ³Ñ¾î¿Ã µ¥ÀÌÅÍ¸¦ ¹Ş´Â º¯¼ö
+	// ê²€ìƒ‰ì‹œ ë„˜ì–´ì˜¬ ë°ì´í„°ë¥¼ ë°›ëŠ” ë³€ìˆ˜
 	String searchColumn = request.getParameter("searchColumn");
-	String searchText = EncodingKorean.kor(request.getParameter("searchText"));
+	String searchText = request.getParameter("searchText");
 	String category = null;
 	
 	/*
-		ÀÌÁ¦ ¿©±â¿¡¼­ searchColumnÀÌ ¹«½¼ °ªÀÎÁö È®ÀÎÀ» ÇØº¸ÀÚ.
-		¾î¶² ÄÃ·³ÀÎÁö È®ÀÎ ÈÄ searchText¸¦ °°ÀÌ ³Ö¾î¼­ ´øÁú ÁØºñ¸¦ ÇÏÀÚ.
+		ì´ì œ ì—¬ê¸°ì—ì„œ searchColumnì´ ë¬´ìŠ¨ ê°’ì¸ì§€ í™•ì¸ì„ í•´ë³´ì.
+		ì–´ë–¤ ì»¬ëŸ¼ì¸ì§€ í™•ì¸ í›„ searchTextë¥¼ ê°™ì´ ë„£ì–´ì„œ ë˜ì§ˆ ì¤€ë¹„ë¥¼ í•˜ì.
 	*/
 	if(searchColumn != null) {
 		if(searchColumn.equals("conid")) {
-			category = "»çÀÌÆ®ID";
+			category = "ì‚¬ì´íŠ¸ID";
 			searchText = searchText.toUpperCase();
 		} else if(searchColumn.equals("cust")) {
-			category = "°í°´¸í";
+			category = "ê³ ê°ëª…";
 		} else if(searchColumn.equals("proc")) {
-			category = "»ç¾÷¸í";
+			category = "ì‚¬ì—…ëª…";
 		}
 	}
 	request.setAttribute("category", category);
 	request.setAttribute("searchText", searchText);
 	
-	// logging °´Ã¼¸¦ ¸¸µé°í selectAll(String year, String condition, String arg) È£ÃâÇÏ¸é ³¡~
+	// logging ê°ì²´ë¥¼ ë§Œë“¤ê³  selectAll(String year, String condition, String arg) í˜¸ì¶œí•˜ë©´ ë~
 	CheckupLogging logging = new CheckuploggingImpl();
 	List<LoggingVo> loggingList = logging.selectAll(curYear, searchColumn, searchText);
 	request.setAttribute("loggingList", loggingList);
@@ -85,13 +84,13 @@
 	<div class="container">
 		<div class="printTitle">
 			<h4>
-				${curYear} ³âµµ Á¤±âÁ¡°Ë ÀÌ·Â &nbsp;
+				${curYear} ë…„ë„ ì •ê¸°ì ê²€ ì´ë ¥ &nbsp;
 				<c:choose>
 					<c:when test="${category != null}">
-						[ °Ë»öÁ¶°Ç - category : ${category} / °Ë»ö¾î : ${searchText}]
+						[ ê²€ìƒ‰ì¡°ê±´ - category : ${category} / ê²€ìƒ‰ì–´ : ${searchText}]
 					</c:when>
 					<c:otherwise>
-						[ ÀüÃ¼ ]
+						[ ì „ì²´ ]
 					</c:otherwise>
 				</c:choose>
 			</h4>
@@ -103,22 +102,22 @@
 				</c:forEach>
 			</select>
 			<select id="searchColumn">
-				<option value="">ÀüÃ¼</option>
-				<option value="conid">»çÀÌÆ®ID</option>
-				<option value="cust">°í°´»ç</option>
-				<option value="proc">»ç¾÷¸í</option>
-			</select> <input type="text" id="searchText"> <input type="button" value="°Ë»ö" onclick="searchEvent()">
+				<option value="">ì „ì²´</option>
+				<option value="conid">ì‚¬ì´íŠ¸ID</option>
+				<option value="cust">ê³ ê°ì‚¬</option>
+				<option value="proc">ì‚¬ì—…ëª…</option>
+			</select> <input type="text" id="searchText"> <input type="button" value="ê²€ìƒ‰" onclick="searchEvent()">
 		</div>
 	</div>
 	<table id="tb1" border="1" cellspacing="0" width="100%">
 		<tr id="boardTitle" height="25px">
-			<td width="5%">µî·Ï³âµµ</td>
-			<td width="5%">±¸ºĞ</td>
-			<td width="10%">»çÀÌÆ®ID</td>
-			<td width="10%">°í°´»ç</td>
-			<td width="10%">»ç¾÷¸í</td>
-			<td width="10%">·Î±× »ı¼ºÀÏ</td>
-			<td width="50%">³»¿ë</td>
+			<td width="5%">ë“±ë¡ë…„ë„</td>
+			<td width="5%">êµ¬ë¶„</td>
+			<td width="10%">ì‚¬ì´íŠ¸ID</td>
+			<td width="10%">ê³ ê°ì‚¬</td>
+			<td width="10%">ì‚¬ì—…ëª…</td>
+			<td width="10%">ë¡œê·¸ ìƒì„±ì¼</td>
+			<td width="50%">ë‚´ìš©</td>
 		</tr>
 		<c:forEach var="logging" items="${loggingList}">
 			<tr class="dataField">

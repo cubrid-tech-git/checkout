@@ -1,6 +1,6 @@
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.service.CheckUpService"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String con_id = request.getParameter("con_id");
@@ -12,17 +12,17 @@
 	int result = service.deleteSite(con_id, con_year);
 	
 	if(result > 0) {
-		out.println("昏力 己傍");
+		out.println("靷牅 靹标车");
 		System.out.println(con_id + " is deleted");
 	} else {
-		out.println("昏力 角菩");
+		out.println("靷牅 鞁ろ尐");
 		System.out.println(con_id + " is not deleted");
 	}
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>delete site controller</title>
 </head>
 <body>

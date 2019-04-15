@@ -1,13 +1,12 @@
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÀüÃ¼ ÀÏÁ¤ ¼öÁ¤</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì „ì²´ ì¼ì • ìˆ˜ì •</title>
 </head>
 <body>
 <%
@@ -15,11 +14,11 @@
 
 	String con_id = request.getParameter("con_id");
 	String con_year = request.getParameter("con_year");
-	String check_nm = EncodingKorean.kor(request.getParameter("check_nm"));
-	String name = EncodingKorean.kor(request.getParameter("name"));
-	String subName = EncodingKorean.kor(request.getParameter("subName"));
+	String check_nm = request.getParameter("check_nm");
+	String name = request.getParameter("name");
+	String subName = request.getParameter("subName");
 	String date = request.getParameter("date");
-	String job_reason = EncodingKorean.kor(request.getParameter("job_reason"));
+	String job_reason = request.getParameter("job_reason");
 	System.out.println(con_id + ", " + con_year + ", " + check_nm + ", " + name + ", " + subName + ", " + date + ", " + job_reason);
 	
 	MainConSubVo vo = new MainConSubVo();
@@ -28,8 +27,8 @@
 	vo.setCheck_nm(check_nm);
 	vo.setMain_oper_nm(name);
 	vo.setSub_oper_nm(subName);
-	vo.setUpd_date(date);	// ¼öÁ¤ÇÒ ³¯Â¥¸¦ ÀúÀå
-	vo.setCon_desc(job_reason);	// º¯°æ »çÀ¯¸¦ ÀúÀå
+	vo.setUpd_date(date);	// ìˆ˜ì •í•  ë‚ ì§œë¥¼ ì €ì¥
+	vo.setCon_desc(job_reason);	// ë³€ê²½ ì‚¬ìœ ë¥¼ ì €ì¥
 	
 	CheckUpServiceImpl service = new CheckUpServiceImpl();
 	String home = request.getContextPath();
@@ -37,23 +36,23 @@
 	
 	if(result == 0) {
 		out.println("<script>");
-		out.println("alert('ÀÔ·Â ½ÇÆĞ');");
+		out.println("alert('ì…ë ¥ ì‹¤íŒ¨');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else  if(result == 1){
 		out.println("<script>");
-		//out.println("alert('ÀÔ·Â ¼º°ø');");
+		//out.println("alert('ì…ë ¥ ì„±ê³µ');");
 		out.println("opener.location.reload();");
 		out.println("window.close();");
 		out.println("</script>");
 	} else if(result == -1) {
 		out.println("<script>");
-		out.println("alert('¿Ï·áµÈ ÀÛ¾÷ÀÌ ÀÖÀ» °æ¿ì ¼öÁ¤ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.');");
+		out.println("alert('ì™„ë£Œëœ ì‘ì—…ì´ ìˆì„ ê²½ìš° ìˆ˜ì •ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else if(result == -2) {
 		out.println("<script>");
-		out.println("alert('´Ù¸¥´Ş·Î ÀÛ¾÷ÀÌ ÀÌÀüµÈ °æ¿ì ¼öÁ¤ÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.');");
+		out.println("alert('ë‹¤ë¥¸ë‹¬ë¡œ ì‘ì—…ì´ ì´ì „ëœ ê²½ìš° ìˆ˜ì •ì´ ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.');");
 		out.println("window.close();");
 		out.println("</script>");
 	}

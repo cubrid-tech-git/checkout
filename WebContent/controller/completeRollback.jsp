@@ -1,20 +1,19 @@
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¡°Ë ¿Ï·á µÇµ¹¸®±â</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì ê²€ ì™„ë£Œ ë˜ëŒë¦¬ê¸°</title>
 </head>
 <body>
 <%
 	String con_id = request.getParameter("con_id");
 	String con_year = request.getParameter("con_year");
-	String originReason = EncodingKorean.kor(request.getParameter("originReason"));
-	String newReason = EncodingKorean.kor(request.getParameter("newReason"));
+	String originReason = request.getParameter("originReason");
+	String newReason = request.getParameter("newReason");
 	
 	System.out.println("id : " + con_id + "\ncon_year : " + con_year + "\noriginReason : " + originReason + "\nnewReason : " + newReason);
 	
@@ -22,7 +21,7 @@
 	vo.setCon_id(con_id);
 	vo.setCon_year(con_year);
 	vo.setJob_reason(originReason);
-	// newReasonÀ» ÀúÀåÇÒ´ë°¡ ¾øÀ¸´Ï±ñ modify_yn¿¡´Ù°¡...
+	// newReasonì„ ì €ì¥í• ëŒ€ê°€ ì—†ìœ¼ë‹ˆê¹ modify_ynì—ë‹¤ê°€...
 	vo.setModify_yn(newReason);
 	int result = new CheckUpServiceImpl().completeRollback(vo);
 	
@@ -30,12 +29,12 @@
 	
 	if(result == 0) {
 		out.println("<script>");
-		out.println("alert('¼öÁ¤ ½ÇÆĞ');");
+		out.println("alert('ìˆ˜ì • ì‹¤íŒ¨');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else {
 		out.println("<script>");
-		//out.println("alert('¼öÁ¤ ¼º°ø');");
+		//out.println("alert('ìˆ˜ì • ì„±ê³µ');");
 		out.println("opener.location.reload();");
 		out.println("window.close();");
 		out.println("</script>");

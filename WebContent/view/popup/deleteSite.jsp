@@ -1,8 +1,8 @@
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
 <%@page import="com.cubrid.checkup.service.CheckUpService"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	String con_id = request.getParameter("con_id");
@@ -20,14 +20,14 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>»çÀÌÆ® Áö¿ì±â</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì‚¬ì´íŠ¸ ì§€ìš°ê¸°</title>
 <script>
 </script>
 </head>
 <body>
 	<script>
-		var check = confirm('´ÙÀ½ »çÀÌÆ®¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? : ${cust_nm}');
+		var check = confirm('ë‹¤ìŒ ì‚¬ì´íŠ¸ë¥¼ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? : ${cust_nm}');
 		if(check) {
 			location.href = "../../controller/deleteSiteController.jsp?con_id=${con_id}&con_year=${con_year}";
 		} else {

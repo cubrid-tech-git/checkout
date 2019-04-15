@@ -3,8 +3,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@ page import="com.cubrid.util.date.*" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	CheckUpServiceImpl service = new CheckUpServiceImpl();
@@ -16,8 +16,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¤±âÁ¡°Ë ÇöÈ²ÆÇ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì •ê¸°ì ê²€ í˜„í™©íŒ</title>
 <style type="text/css">
 #yearDiv {
 	position: absolute; top: 66px; right: 15px;
@@ -59,14 +59,14 @@
 </head>
 <body>
 	<div id="button">
-		<input type="button" value="ÀÏÁ¤ µî·Ï" onclick="openUrl('../popup/insertData.jsp', 'width=445, height=380')">
+		<input type="button" value="ì¼ì • ë“±ë¡" onclick="openUrl('../popup/insertData.jsp', 'width=445, height=380')">
 		<!-- <input type="button" value=" Get JIRA" onclick="getJira()"><br> -->
-		<input type="button" value="ÀÏÁ¤ ¼öÁ¤" onclick="openUrl('../popup/updateData.jsp', 'width=445, height=470')"><br>
-		<input type="button" value="Ç×¸ñ »èÁ¦" onclick="openUrl('../popup/deleteSite.jsp', 'width=445, height=380');">
-		<input type="button" value="ÀÌ·Â º¸±â" onclick="window.open('../tableList/checkupHistory.jsp?curYear=${curYear}', '_blank')">
+		<input type="button" value="ì¼ì • ìˆ˜ì •" onclick="openUrl('../popup/updateData.jsp', 'width=445, height=470')"><br>
+		<input type="button" value="í•­ëª© ì‚­ì œ" onclick="openUrl('../popup/deleteSite.jsp', 'width=445, height=380');">
+		<input type="button" value="ì´ë ¥ ë³´ê¸°" onclick="window.open('../tableList/checkupHistory.jsp?curYear=${curYear}', '_blank')">
 	</div>
 	<div id="yearDiv">
-		¼±ÅÃ³âµµ : 
+		ì„ íƒë…„ë„ : 
 		<select id="yearSelect" onchange="selectYear(this.value)">
 			<c:forEach var="year" items="${yearList}">
 				<option id="${year}" value="${year}">${year}</option>
@@ -76,9 +76,9 @@
 			<option id="2014" value="2014">2014</option>
 			<option id="2015" value="2015">2015</option> -->
 		</select>
-		´ã´çÀÚ :
+		ë‹´ë‹¹ì :
 		<select id="memberSelect" onchange="selectMemberName(this.value)">
-			<option id="default" value="default">ÀüÃ¼</option>
+			<option id="default" value="default">ì „ì²´</option>
 			<c:forEach var="member" items="${memberList}">
 				<option id="${member.jira_id}" value="${member.jira_id}">${member.cub_name}</option>
 			</c:forEach>

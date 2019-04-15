@@ -34,26 +34,26 @@ function insertCheckAndSubmit(url) {
 	var inspector1 = document.getElementById("inspector1").value;
 	var date = document.getElementById("date").value;
 	if(condition == "") {
-		alert("Á¡°ËÁ¶°ÇÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ì¡°ê±´ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(inspector == "") {
-		alert("(Á¤)´ã´çÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("(ì •)ë‹´ë‹¹ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(inspector1 == "") {
-		alert("(ºÎ)´ã´çÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("(ë¶€)ë‹´ë‹¹ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(date == "") {
-		alert("Á¡°ËÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	
 	location.href = url + "?con_id=" + con_id + "&con_year=" + con_year + "&condition=" + condition + "&inspector=" + inspector + "&inspector1=" + inspector1 + "&date=" + date;
 }
 
-// ÀüÃ¼ ÀÏÁ¤ ¼öÁ¤
+// ì „ì²´ ì¼ì • ìˆ˜ì •
 function updateCheckAll(url) {
 	var con_id = document.getElementById("con_id").value;
 	var con_year = document.getElementById("con_year").value;
@@ -64,15 +64,15 @@ function updateCheckAll(url) {
 	var job_reason = document.getElementById("job_reason").value;
 	
 	if(name == "") {
-		alert("´ã´çÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ë‹´ë‹¹ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(date == "") {
-		alert("Á¡°ËÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(job_reason == "") {
-		alert("¼öÁ¤ »çÀ¯¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		alert("ìˆ˜ì • ì‚¬ìœ ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		return;
 	}
 	
@@ -81,7 +81,7 @@ function updateCheckAll(url) {
 }
 
 
-// ¼±ÅÃ ³¯Â¥¸¸ ¼öÁ¤
+// ì„ íƒ ë‚ ì§œë§Œ ìˆ˜ì •
 function updateCheckMonth(url) {
 	var con_id = document.getElementById("con_id").value;
 	var con_year = document.getElementById("con_year").value;
@@ -92,23 +92,23 @@ function updateCheckMonth(url) {
 	var originDate = document.getElementById("originDate").value;
 	
 	if(check_nm == "") {
-		alert("Á¡°Ë Á¶°ÇÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ ì¡°ê±´ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(job_nm == "") {
-		alert("´ã´çÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ë‹´ë‹¹ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(originDate == "") {
-		alert("±âÁ¸ Á¡°ËÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ê¸°ì¡´ ì ê²€ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(job_date == "") {
-		alert("Á¡°ËÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(job_reason == "") {
-		alert("¼öÁ¤»çÀ¯¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ìˆ˜ì •ì‚¬ìœ ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	var originYear = originDate.substr(0, 4);
@@ -117,7 +117,7 @@ function updateCheckMonth(url) {
 	var year = job_date.substr(0, 4);
 	var month = job_date.substr(5, 2);
 	var day = job_date.substr(8);
-	var check = confirm(originYear + "³â " + originMonth + "¿ù " + originDay + "ÀÏÀÇ Á¡°ËÀÏÀ»\n" + year + "³â " + month + "¿ù " + day + "ÀÏ·Î ¹Ù²Ù½Ã°Ú½À´Ï±î?");
+	var check = confirm(originYear + "ë…„ " + originMonth + "ì›” " + originDay + "ì¼ì˜ ì ê²€ì¼ì„\n" + year + "ë…„ " + month + "ì›” " + day + "ì¼ë¡œ ë°”ê¾¸ì‹œê² ìŠµë‹ˆê¹Œ?");
 	if(check == true) 
 		location.href = url + "?con_id=" + con_id + "&con_year=" + con_year + "&job_nm=" + job_nm + "&job_date=" + job_date + "&job_reason=" + job_reason + "&check_nm=" + check_nm + "&originDate=" + originDate;
 	else
@@ -153,7 +153,7 @@ function openUrl(url, option) {
 	var param = top.infoListTable.document.getElementById("checkValue").value;
 	var param1 = top.infoListTable.document.getElementById("checkValue1").value;
 	if(param=="") {
-		alert("¼±ÅÃµÈ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+		alert("ì„ íƒëœ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		return;
 	} else {
 		url = url + "?con_id=" + param + "&con_year=" + param1;
@@ -170,7 +170,7 @@ function checkupCompleteWithReason(url) {
 	var job_reason = document.getElementById("job_reason").value;
 	
 	if(job_reason == "") {
-		alert("¼öÁ¤»çÀ¯¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ìˆ˜ì •ì‚¬ìœ ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	url += "?id=" + id + "&seq=" + seq + "&name=" + name + "&date=" + date + "&originDate=" + originDate + "&check_nm=" + check_nm + "&job_reason=" + job_reason;  
@@ -185,19 +185,19 @@ function checkupComplete(url) {
 	var originDate = document.getElementById("originDate").value;
 	var check_nm = document.getElementById("check_nm").value;
 	if(name == "") {
-		alert("Á¡°ËÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(date == "") {
-		alert("Á¡°Ë ³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ ë‚ ì§œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(check_nm == "") {
-		alert("Á¡°Ë Á¶°ÇÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ ì¡°ê±´ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	if(originDate != date) {
-		var check = confirm("Á¡°Ë ³¯Â¥°¡ ´Ù¸¨´Ï´Ù. ¼öÁ¤»çÀ¯¸¦ ÀÔ·ÂÇÏ½Ã°Ú½À´Ï±î?");
+		var check = confirm("ì ê²€ ë‚ ì§œê°€ ë‹¤ë¦…ë‹ˆë‹¤. ìˆ˜ì •ì‚¬ìœ ë¥¼ ì…ë ¥í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 		if(check) {
 			open("updateCompleteWithReason.jsp?id=" + id + "&seq=" + seq + "&name=" + name + "&date=" + date + "&originDate=" + originDate + "&check_nm=" + check_nm, "", "width=300, height=220")
 			return;
@@ -212,7 +212,7 @@ function deletePlan(url) {
 	var con_id = document.getElementById("con_id").value;
 	var con_year = document.getElementById("con_year").value;
 	var job_date = document.getElementById("originDate").value;
-	var check = confirm("ÇØ´ç Á¡°Ë ÀÏÁ¤À» »èÁ¦ÇÏ°Ú½À´Ï±î?");
+	var check = confirm("í•´ë‹¹ ì ê²€ ì¼ì •ì„ ì‚­ì œí•˜ê² ìŠµë‹ˆê¹Œ?");
 	
 	url += "?con_id=" + con_id + "&con_year=" + con_year + "&job_date=" + job_date;
 	
@@ -238,7 +238,7 @@ function openReWrite(id, seq, date, name, job_reason, job_visit_remote) {
 function checkOperName(val) {
 	var main_oper = document.getElementById("main_oper").value;
 	if(main_oper != val) {
-		alert("´ã´ç¿Í Á¡°ËÀÚ°¡ ´Ù¸¨´Ï´Ù.\n´ã´çÀÚ : " + main_oper + "\nÁ¡°ËÀÚ : " + val);
+		alert("ë‹´ë‹¹ì™€ ì ê²€ìê°€ ë‹¤ë¦…ë‹ˆë‹¤.\në‹´ë‹¹ì : " + main_oper + "\nì ê²€ì : " + val);
 		window.close();
 	}
 }
@@ -255,7 +255,7 @@ function completeUpdate(url) {
 	var check_nm = document.getElementById("check_nm").value;
 	
 	if(check_nm == "") {
-		alert("Á¡°ËÁ¶°ÇÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		alert("ì ê²€ì¡°ê±´ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		return;
 	}
 	
@@ -293,7 +293,7 @@ function searchEvent() {
 }
 
 function getJira() {
-	var check = confirm("JIRA DB¿¡¼­ µ¥ÀÌÅÍ¸¦ ¾÷µ¥ÀÌÆ® ÇÏ½Ã°Ú½À´Ï±î?");
+	var check = confirm("JIRA DBì—ì„œ ë°ì´í„°ë¥¼ ì—…ë°ì´íŠ¸ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
 	if(check) {
 		window.open("../../controller/getJira.jsp", "", "width=445, height=380");
 	}

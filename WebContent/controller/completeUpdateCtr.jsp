@@ -1,14 +1,13 @@
 <%@page import="java.util.List"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¿Ï·á°Ç ¼öÁ¤ ÄÁÆ®·Ñ·¯</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì™„ë£Œê±´ ìˆ˜ì • ì»¨íŠ¸ë¡¤ëŸ¬</title>
 </head>
 <body>
 <%
@@ -17,8 +16,8 @@
 	String con_year = request.getParameter("con_year");
 	String originDate = request.getParameter("originDate");
 	String job_date = request.getParameter("date");
-	String job_nm = EncodingKorean.kor(request.getParameter("job_nm"));
-	String job_reason = EncodingKorean.kor(request.getParameter("job_reason"));
+	String job_nm = request.getParameter("job_nm");
+	String job_reason = request.getParameter("job_reason");
 	String check_nm = request.getParameter("check_nm");
 	System.out.println("id : " + con_id + ", year : " + con_year + ", job_date : " + job_date + ", originDate : " + originDate + ", job_nm : " + job_nm + ", check_nm : " + check_nm + ", job_reason : " + job_reason);
 	JobOpVo vo = new JobOpVo();
@@ -31,7 +30,7 @@
 	vo.setJob_reason(job_reason);
 	vo.setJob_visit_remote(check_nm);
 	
-	// ¼öÁ¤ÇÏ·Á´Â ´Ş¿¡ ¿Ï·áµÇÁö ¾ÊÀº ÀÏÁ¤ÀÌ ÀÖ´ÂÁö È®ÀÎ
+	// ìˆ˜ì •í•˜ë ¤ëŠ” ë‹¬ì— ì™„ë£Œë˜ì§€ ì•Šì€ ì¼ì •ì´ ìˆëŠ”ì§€ í™•ì¸
 	List<JobOpVo> list = (List<JobOpVo>)service.selectMonth(vo);
 	String compareDate = job_date.substring(0, 7);
 	for(JobOpVo checkMonthVo : list) {
@@ -39,7 +38,7 @@
 		System.out.println("not complete date : " + dbDate + "\tchangeDate : " + compareDate);
 		if(dbDate.equals(compareDate)) {
 			out.println("<script>");
-			out.println("alert('¼öÁ¤ÇÏ·Á´Â ³¯Â¥¿¡ ¿Ï·áµÇÁö ¾ÊÀº Á¡°ËÀÌ ¿¹Á¤µÇ¾îÀÖ½À´Ï´Ù.');");
+			out.println("alert('ìˆ˜ì •í•˜ë ¤ëŠ” ë‚ ì§œì— ì™„ë£Œë˜ì§€ ì•Šì€ ì ê²€ì´ ì˜ˆì •ë˜ì–´ìˆìŠµë‹ˆë‹¤.');");
 			out.println("window.history.back();");
 			out.println("</script>");
 			return;
@@ -51,17 +50,17 @@
 	
 	if(result == -3) {
 		out.println("<script>");
-		out.println("alert('¿Ï·á ³¯Â¥°¡ Áßº¹µÇ¾î ¼öÁ¤ÀÌ ºÒ°¡ÇÕ´Ï´Ù.');");
+		out.println("alert('ì™„ë£Œ ë‚ ì§œê°€ ì¤‘ë³µë˜ì–´ ìˆ˜ì •ì´ ë¶ˆê°€í•©ë‹ˆë‹¤.');");
 		out.println("window.close();");
 		out.println("</script>");
 	}else if(result == 0) {
 		out.println("<script>");
-		out.println("alert('¼öÁ¤ ½ÇÆĞ');");
+		out.println("alert('ìˆ˜ì • ì‹¤íŒ¨');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else {
 		out.println("<script>");
-		//out.println("alert('¼öÁ¤ ¼º°ø');");
+		//out.println("alert('ìˆ˜ì • ì„±ê³µ');");
 		out.println("opener.location.reload();");
 		out.println("window.close();");
 		out.println("</script>");

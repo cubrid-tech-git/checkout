@@ -1,13 +1,13 @@
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.vo.CubMemberVo"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CUBRID MEMBER</title>
 <link rel="stylesheet" type="text/css" href="../../css/tableList.css">
 <script type="text/javascript" src="../../js/myScript.js"></script>
@@ -37,10 +37,10 @@ table#tb1 {
 		<table id="tb1" border="1">
 			<tr id="boardTitle">
 				<td width="150px">ID</td>
-				<td width="100px">捞抚</td>
+				<td width="100px">鞚措</td>
 				<td width="300px">e-mail</td>
-				<td width="140px">痢八 免仿 汲沥</td>
-				<td width="70px">昏力</td>
+				<td width="140px">鞝愱瞼 於滊牓 靹れ爼</td>
+				<td width="70px">靷牅</td>
 			</tr>
 			<c:forEach var="member" items="${memberList}">
 				<tr>
@@ -50,24 +50,24 @@ table#tb1 {
 					<td id="${member.jira_id}_td">
 						<c:choose>
 							<c:when test="${member.show_yn == 'Y'}">
-								<input type="radio" name="${member.jira_id}_show" value="Y" checked="checked">钎矫 &nbsp;
-								<input type="radio" name="${member.jira_id}_show" value="N">见辫
+								<input type="radio" name="${member.jira_id}_show" value="Y" checked="checked">響滌嫓 &nbsp;
+								<input type="radio" name="${member.jira_id}_show" value="N">靾箑
 							</c:when>
 							<c:otherwise>
-								<input type="radio" name="${member.jira_id}_show" value="Y">钎矫 &nbsp;
-								<input type="radio" name="${member.jira_id}_show" value="N" checked="checked">见辫
+								<input type="radio" name="${member.jira_id}_show" value="Y">響滌嫓 &nbsp;
+								<input type="radio" name="${member.jira_id}_show" value="N" checked="checked">靾箑
 							</c:otherwise>
 						</c:choose>
 					</td>
 					<td id="${member.jira_id}_del">
-						<input type="checkbox" name="${member.jira_id}_del" value="D">昏力
+						<input type="checkbox" name="${member.jira_id}_del" value="D">靷牅
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<br>
-		<input type="submit" value="涝仿"> &nbsp;&nbsp;&nbsp;
-		<input type="reset"	value="秒家">
+		<input type="submit" value="鞛呺牓"> &nbsp;&nbsp;&nbsp;
+		<input type="reset"	value="旆唽">
 	</form>
 </div>
 </html>

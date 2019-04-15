@@ -1,22 +1,21 @@
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¡°Ë ¿Ï·á µî·Ï controller</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì ê²€ ì™„ë£Œ ë“±ë¡ controller</title>
 </head>
 <body>
 <%
 	String id = request.getParameter("id");
 	String year = request.getParameter("seq");
-	String name = EncodingKorean.kor(request.getParameter("name"));
+	String name = request.getParameter("name");
 	String date = request.getParameter("date");
 	String originDate = request.getParameter("originDate");
 	String check_nm = request.getParameter("check_nm");
-	String job_reason = EncodingKorean.kor(request.getParameter("job_reason"));
+	String job_reason = request.getParameter("job_reason");
 	System.out.println(id + "\t" + name + "\t" + year + "\t" + date + "\t" + originDate + "\t" + check_nm + "\t" + job_reason);
 	JobOpVo vo = new JobOpVo();
 	vo.setJob_reason(job_reason);
@@ -26,19 +25,19 @@
 	vo.setJob_nm(name);
 	vo.setUpd_date(originDate);
 	vo.setJob_visit_remote(check_nm);
-	// service °´Ã¼ ¸¸µé¾î¼­ insert ¼öÇà
+	// service ê°ì²´ ë§Œë“¤ì–´ì„œ insert ìˆ˜í–‰
 	CheckUpServiceImpl service = new CheckUpServiceImpl();
 	int result = service.insertCompleteCheck(vo);
 	String home = request.getContextPath();
 	
 	if(result == 0) {
 		out.println("<script>");
-		out.println("alert('ÀÔ·Â ½ÇÆĞ');");
+		out.println("alert('ì…ë ¥ ì‹¤íŒ¨');");
 		out.println("window.close();");
 		out.println("</script>");
 	} else {
 		out.println("<script>");
-		//out.println("alert('ÀÔ·Â ¼º°ø');");
+		//out.println("alert('ì…ë ¥ ì„±ê³µ');");
 		out.println("opener.location.reload();");
 		out.println("window.opener.close();");
 		out.println("window.close();");

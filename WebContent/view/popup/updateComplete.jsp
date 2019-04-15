@@ -2,14 +2,13 @@
 <%@page import="java.util.List"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.util.date.MyDate"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¡°Ë ¿Ï·á µî·Ï</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì ê²€ ì™„ë£Œ ë“±ë¡</title>
 <script type="text/javascript" src="../../js/myScript.js"></script>
 <style type="text/css">
 #wrapper {
@@ -30,7 +29,7 @@
 	<%
 		String currDate = MyDate.currentDate();
 		request.setAttribute("currDate", currDate);
-		String name = EncodingKorean.kor(request.getParameter("name").toString());
+		String name = request.getParameter("name").toString();
 		request.setAttribute("name", name);
 		String con_id = request.getParameter("con_id");
 		request.setAttribute("con_id", con_id);
@@ -62,38 +61,38 @@
 	<form action="">
 	<table id="">
 		<tr>
-			<td id="boardTitle" width="100px">´ã ´ç ÀÚ</td>
+			<td id="boardTitle" width="100px">ë‹´ ë‹¹ ìž</td>
 			<td align="left">${name}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle" width="100px">Á¡°Ë¹æ½Ä</td>
+			<td id="boardTitle" width="100px">ì ê²€ë°©ì‹</td>
 			<td align="left">
 				<select id="check_nm">
 					<c:choose>
 						<c:when test="${visit_cnt == 1}">
-							<option value="V">¹æ¹®</option>
-							<option value="R">¿ø°Ý</option>
+							<option value="V">ë°©ë¬¸</option>
+							<option value="R">ì›ê²©</option>
 						</c:when>
 						<c:when test="${remote_cnt == 1}">
-							<option value="R">¿ø°Ý</option>
-							<option value="V">¹æ¹®</option>
+							<option value="R">ì›ê²©</option>
+							<option value="V">ë°©ë¬¸</option>
 						</c:when>
 					</c:choose>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡ °Ë ÀÚ</td>
+			<td id="boardTitle">ì  ê²€ ìž</td>
 			<td align="left">
 				<!-- 
 				<select id="inspector">
 					<option value="${name}">${name}</option>
-					<option value="±èÃ¢ÈÖ">±èÃ¢ÈÖ</option>
-					<option value="Á¤¸¸¿µ">Á¤¸¸¿µ</option>
-					<option value="±è¼ºÁø">±è¼ºÁø</option>
-					<option value="ÀÌ¿ë¹Ì">ÀÌ¿ë¹Ì</option>
-					<option value="¹Úµ¿À±">¹Úµ¿À±</option>
-					<option value="±è½ÂÈÆ">±è½ÂÈÆ</option>
+					<option value="ê¹€ì°½íœ˜">ê¹€ì°½íœ˜</option>
+					<option value="ì •ë§Œì˜">ì •ë§Œì˜</option>
+					<option value="ê¹€ì„±ì§„">ê¹€ì„±ì§„</option>
+					<option value="ì´ìš©ë¯¸">ì´ìš©ë¯¸</option>
+					<option value="ë°•ë™ìœ¤">ë°•ë™ìœ¤</option>
+					<option value="ê¹€ìŠ¹í›ˆ">ê¹€ìŠ¹í›ˆ</option>
 				</select>
 				-->
 				<select id="inspector">
@@ -105,13 +104,13 @@
 			</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡°Ë¿¹Á¤ÀÏ</td>
+			<td id="boardTitle">ì ê²€ì˜ˆì •ì¼</td>
 			<td>
 				${originDate} 
 			</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡°Ë³¯Â¥</td>
+			<td id="boardTitle">ì ê²€ë‚ ì§œ</td>
 			<td>
 				<input type="date" id="date" value="${currDate}">
 			</td>
@@ -122,9 +121,9 @@
 		<input type="hidden" id="con_year" value="${con_year}">
 		<input type="hidden" id="originDate" value="${originDate}">
 		<input type="hidden" id="main_oper" value="${name}">
-		<input type="button" value="µî·Ï" onclick="checkupComplete('../../controller/checkComplete.jsp')">
-		<input type="button" value="»èÁ¦" onclick="deletePlan('../../controller/deletePlan.jsp')">
-		<input type="button" value="Ãë¼Ò" onclick="eventReset()">
+		<input type="button" value="ë“±ë¡" onclick="checkupComplete('../../controller/checkComplete.jsp')">
+		<input type="button" value="ì‚­ì œ" onclick="deletePlan('../../controller/deletePlan.jsp')">
+		<input type="button" value="ì·¨ì†Œ" onclick="eventReset()">
 	</form>
 	</div>
 </body>

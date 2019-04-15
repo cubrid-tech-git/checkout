@@ -153,7 +153,7 @@ html {
 				<tr id="hr${index}" title="${vo.con_id}" >
 					<td id="hr${index}" class="dataField" width="55px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})">${vo.con_from_date}</td>
 					<td id="hr${index}" class="dataField" width="55px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})">${vo.con_to_date}</td>
-					<td id="hr${index}" class="dataField" width="210px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})"><a href="http://www.cubrid.com:8888/browse/${vo.con_id}">${vo.cust_nm}</a><br>[${vo.proc_nm}]</td>
+					<td id="hr${index}" class="dataField" width="210px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})"><a href="http://dev.cubrid.com:8888/browse/${vo.con_id}" target="_blank">${vo.cust_nm}</a><br>[${vo.proc_nm}]</td>
 					<td id="hr${index}" class="dataField" width="65px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})">${vo.check_nm}</td>
 					<td id="hr${index}" class="dataField" width="50px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})">${vo.main_oper_nm}</td>
 					<td id="hr${index}" class="dataField" width="50px" onclick="changeSelect(this.id, ${count}, ${vo.con_year})" style="font-weight: bold;">${vo.visitPlanCount},${vo.remotePlanCount}</td>

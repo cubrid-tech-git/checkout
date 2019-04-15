@@ -4,13 +4,13 @@
 <%@page import="com.cubrid.checkup.vo.MainConVo"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¡°Ë ³»¿ë È®ÀÎ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì ê²€ ë‚´ìš© í™•ì¸</title>
 <style type="text/css">
 #submitButton {
 	text-align: center;
@@ -76,52 +76,52 @@ td {
 	</div>
 	<table id="tb1">
 		<tr>
-			<td id="boardTitle">°í°´»ç</td>
+			<td id="boardTitle">ê³ ê°ì‚¬</td>
 			<td id="dataField">${mainConSubVo.cust_nm}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">ÇÁ·ÎÁ§Æ®</td>
+			<td id="boardTitle">í”„ë¡œì íŠ¸</td>
 			<td id="dataField">${mainConSubVo.proc_nm}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">´ã´çÀÚ</td>
+			<td id="boardTitle">ë‹´ë‹¹ì</td>
 			<td id="dataField">${mainConSubVo.main_oper_nm}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡°ËÀÚ</td>
+			<td id="boardTitle">ì ê²€ì</td>
 			
 			<td id="dataField">${resultJobOpVo.job_nm}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡°Ë³¯Â¥</td>
+			<td id="boardTitle">ì ê²€ë‚ ì§œ</td>
 			<td id="dataField">${resultJobOpVo.job_date}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">µî·Ï³¯Â¥</td>
+			<td id="boardTitle">ë“±ë¡ë‚ ì§œ</td>
 			<td id="dataField">${resultJobOpVo.upd_date}</td>
 		</tr>
 		<tr>
-			<td id="boardTitle">Á¡°Ë¹æ½Ä</td>
+			<td id="boardTitle">ì ê²€ë°©ì‹</td>
 			<td id="dataField">
 				<c:choose>
 					<c:when test="${resultJobOpVo.job_visit_remote == 'V'}">
-						¹æ¹®
+						ë°©ë¬¸
 					</c:when>
 					<c:otherwise>
-						¿ø°İ
+						ì›ê²©
 					</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
 		<tr>
-		<!-- modify_yn = 'Y' ÀÏ °æ¿ì, textArea »Ñ·ÁÁÖ±â -->
-			<td id="boardTitle">¼öÁ¤»çÀ¯</td>
+		<!-- modify_yn = 'Y' ì¼ ê²½ìš°, textArea ë¿Œë ¤ì£¼ê¸° -->
+			<td id="boardTitle">ìˆ˜ì •ì‚¬ìœ </td>
 			<td id="dataField">
 				<textarea rows="3" cols="" disabled="disabled">${job_reason}</textarea>
 			</td>
 		</tr>
 	</table>
-	<input type="button" value="¼öÁ¤" onclick="openReWrite('${con_id}', '${con_year}', '${resultJobOpVo.job_date}', '${resultJobOpVo.job_nm}', '${resultJobOpVo.job_reason}', '${resultJobOpVo.job_visit_remote}')">
-	<input type="button" value="´İ±â" onclick="window.close();">
+	<input type="button" value="ìˆ˜ì •" onclick="openReWrite('${con_id}', '${con_year}', '${resultJobOpVo.job_date}', '${resultJobOpVo.job_nm}', '${resultJobOpVo.job_reason}', '${resultJobOpVo.job_visit_remote}')">
+	<input type="button" value="ë‹«ê¸°" onclick="window.close();">
 	</div>
 </html>

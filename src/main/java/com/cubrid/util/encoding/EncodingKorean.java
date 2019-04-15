@@ -19,6 +19,7 @@ public class EncodingKorean {
 	 */
 	public static String kor(String input) {
 		String result = null;
+		/*
 		if(input == null) result = null;
 		else {
 			try {
@@ -28,6 +29,8 @@ public class EncodingKorean {
 				e.printStackTrace();
 			}
 		}
+		*/
+		result = input;
 		
 		return result;
 	}
@@ -41,6 +44,7 @@ public class EncodingKorean {
 	 */
 	public static String utfToEuckr(String input) {
 		String result = null;
+		/*
 		if(input == null) result = null;
 		else {
 			try {
@@ -50,6 +54,9 @@ public class EncodingKorean {
 				e.printStackTrace();
 			}
 		}
+		*/
+		result = input;
+		
 		return result;
 	}
 	
@@ -62,6 +69,7 @@ public class EncodingKorean {
 	public static String utfToMs(String input) {
 		String result = null;
 		
+		/*
 		if(input == null) return null;
 		else {
 			try {
@@ -71,6 +79,8 @@ public class EncodingKorean {
 				e.printStackTrace();
 			}
 		}
+		*/
+		result = input;
 		
 		return result;
 	}

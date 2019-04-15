@@ -3,14 +3,14 @@
 <%@page import="java.util.List"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
 <%@page import="com.cubrid.checkup.service.CheckUpService"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%
 	CheckUpService service = new CheckUpServiceImpl();
 	List<CubMemberVo> memberList = service.selectMember("A");
 	List<CubMemberVo> updateList = new ArrayList<CubMemberVo>();
 	
-	// ¹Ù²ï °ªµéÀ» ¹Þ¾Æ¿Í¼­
+	// ë°”ë€ ê°’ë“¤ì„ ë°›ì•„ì™€ì„œ
 	for(CubMemberVo vo : memberList) {
 		if(request.getParameter(vo.getJira_id() + "_del") != null) 
 			vo.setShow_yn(request.getParameter(vo.getJira_id() + "_del"));
@@ -20,14 +20,14 @@
 		updateList.add(vo);
 	}
 	
-	// update ½Ç½Ã
+	// update ì‹¤ì‹œ
 	int result = service.updateCubMember(updateList);
 	request.setAttribute("result", result);
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Member Management</title>
 </head>
 <body>

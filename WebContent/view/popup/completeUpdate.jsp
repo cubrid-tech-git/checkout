@@ -1,14 +1,13 @@
 <%@page import="com.cubrid.util.date.MyDate"%>
 <%@page import="com.cubrid.util.replace.MakeModifyReason"%>
 <%@page import="com.cubrid.checkup.vo.JobOpVo"%>
-<%@page import="com.cubrid.util.encoding.EncodingKorean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¿Ï·á ³»¿ë ¼öÁ¤</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì™„ë£Œ ë‚´ìš© ìˆ˜ì •</title>
 <style type="text/css">
 #submitButton {
 	text-align: center;
@@ -43,8 +42,8 @@ td {
 		String con_id = request.getParameter("con_id");
 		int con_year = Integer.parseInt(request.getParameter("con_year"));
 		String date = request.getParameter("date");
-		String name = EncodingKorean.kor(request.getParameter("name"));
-		String originReason = EncodingKorean.kor(request.getParameter("job_reason"));
+		String name = request.getParameter("name");
+		String originReason = request.getParameter("job_reason");
 		String job_visit_remote = request.getParameter("job_visit_remote");
 		
 		request.setAttribute("con_id", con_id);
@@ -61,36 +60,36 @@ td {
 		<img src="../../img/check_rewrite.jpg">
 		<table>
 			<tr>
-				<td id="boardTitle">Á¡°ËÀÚ</td>
+				<td id="boardTitle">ì ê²€ì</td>
 				<td id="dataField">
 					<input id="inspector" type="text" value="${name}">
 				</td>
 			</tr>
 			<tr>
-				<td id="boardTitle">³¯Â¥</td>
+				<td id="boardTitle">ë‚ ì§œ</td>
 				<td id="dataField">
 					<input type="date" id="date" value="${originDate}">
 				</td>
 			</tr>
 			<tr>
-				<td id="boardTitle">Á¡°Ë¹æ½Ä</td>
+				<td id="boardTitle">ì ê²€ë°©ì‹</td>
 				<td align="left">
 					<select id="check_nm">
 						<c:choose>
 							<c:when test="${job_visit_remote == 'V'}">
-								<option value="V">¹æ¹®</option>
-								<option value="R">¿ø°İ</option>
+								<option value="V">ë°©ë¬¸</option>
+								<option value="R">ì›ê²©</option>
 							</c:when>
 							<c:when test="${job_visit_remote == 'R'}">
-								<option value="R">¿ø°İ</option>
-								<option value="V">¹æ¹®</option>
+								<option value="R">ì›ê²©</option>
+								<option value="V">ë°©ë¬¸</option>
 							</c:when>
 						</c:choose>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td id="boardTitle">¼öÁ¤ ÀÌÀ¯</td>
+				<td id="boardTitle">ìˆ˜ì • ì´ìœ </td>
 				<td id="dataField">
 					<textarea id="reason" rows="11" cols="20"></textarea>
 				</td>
@@ -101,9 +100,9 @@ td {
 		<input type="hidden" id="con_year" value="${con_year}">
 		<input type="hidden" id="originDate" value="${originDate}">
 		<input type="hidden" id="originReason" value="${originReason}">
-		<input type="button" value="ÀÔ·Â" onclick="completeUpdate('../../controller/completeUpdateCtr.jsp')">
-		<input type="button" value="µî·ÏÃë¼Ò" onclick="rollbackDate('../../controller/completeRollback.jsp')">
-		<input type="button" value="Ãë¼Ò" onclick="window.close()">
+		<input type="button" value="ì…ë ¥" onclick="completeUpdate('../../controller/completeUpdateCtr.jsp')">
+		<input type="button" value="ë“±ë¡ì·¨ì†Œ" onclick="rollbackDate('../../controller/completeRollback.jsp')">
+		<input type="button" value="ì·¨ì†Œ" onclick="window.close()">
 	</div>
 </body>
 </html>

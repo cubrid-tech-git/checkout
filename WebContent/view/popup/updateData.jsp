@@ -4,13 +4,13 @@
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
 <%@page import="com.cubrid.checkup.vo.CubMemberVo"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Á¤±âÁ¡°Ë ÀÏÁ¤ ¼öÁ¤</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì •ê¸°ì ê²€ ì¼ì • ìˆ˜ì •</title>
 <style type="text/css">
 #submitButton {
 	text-align: center;
@@ -58,7 +58,7 @@ td {
 	vo.setCon_id(con_id);
 	vo.setCon_year(con_year);
 	
-	// service °´Ã¼ »ý¼ºÇÏ¿© vo °´Ã¼ ¸®ÅÏ¹Þ±â
+	// service ê°ì²´ ìƒì„±í•˜ì—¬ vo ê°ì²´ ë¦¬í„´ë°›ê¸°
 	CheckUpServiceImpl service = new CheckUpServiceImpl();
 	MainConSubVo mainConSubVo = service.selectInfoByCodeSeq(con_id, con_year);
 	request.setAttribute("mainConSubVo", mainConSubVo);
@@ -78,7 +78,7 @@ td {
 %>
 	<c:if test="${mainConSubVo.upd_date == null }">
 		<script type="text/javascript">
-			alert("ÀÏÁ¤ÀÌ µî·ÏµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+			alert("ì¼ì •ì´ ë“±ë¡ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 			window.close();
 		</script>
 	</c:if>
@@ -86,58 +86,58 @@ td {
 		<img src="../../img/updateTitle.jpg">
 		<br>
 		<div>
-			<input type="radio" name="type" id="type" value="ALL" onclick="selectRadio(this.value)" ${allChecked}> ÀüÃ¼ ¼öÁ¤ &nbsp; 
-			<input type="radio" name="type" id="type" value="MONTH" onclick="selectRadio(this.value)" ${monthChecked}> ¼±ÅÃ ¼öÁ¤
+			<input type="radio" name="type" id="type" value="ALL" onclick="selectRadio(this.value)" ${allChecked}> ì „ì²´ ìˆ˜ì • &nbsp; 
+			<input type="radio" name="type" id="type" value="MONTH" onclick="selectRadio(this.value)" ${monthChecked}> ì„ íƒ ìˆ˜ì •
 		</div>
 		<form id="form1" action="" method="get">
 			<table id="tb1">
 				<tr>
-					<td id="boardTitle">°í°´»ç</td>
+					<td id="boardTitle">ê³ ê°ì‚¬</td>
 					<td id="dataField">
 						${mainConSubVo.cust_nm}
 						<input type="hidden" id="customer" value="${mainConSubVo.cust_nm}">
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">»ç¾÷¸í</td>
+					<td id="boardTitle">ì‚¬ì—…ëª…</td>
 					<td id="dataField">
 						${mainConSubVo.proc_nm}
 						<input type="hidden" id="project" value="${mainConSubVo.proc_nm}">
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">°è¾à±â°£</td>
+					<td id="boardTitle">ê³„ì•½ê¸°ê°„</td>
 					<td id="dataField">${mainConSubVo.con_from_date} ~ ${mainConSubVo.con_to_date}</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">Á¡°ËÁ¶°Ç</td>
+					<td id="boardTitle">ì ê²€ì¡°ê±´</td>
 					<td id="dataField">
 						<c:choose>
 							<c:when test="${type == 'ALL'}">
 								<select id="condition" onchange="selectCondition(this.value)">
 									<option value="${mainConSubVo.check_nm}">${mainConSubVo.check_nm}</option>
-									<option value="¹æ¹®(¸Å¿ù)">¹æ¹®(¸Å¿ù)</option>
-									<option value="¹æ¹®(°Ý¿ù)">¹æ¹®(°Ý¿ù)</option>
-									<option value="¹æ¹®(ºÐ±â)">¹æ¹®(ºÐ±â)</option>
-									<option value="¹æ¹®(¹Ý±â)">¹æ¹®(¹Ý±â)</option>
-									<option value="¿ø°Ý(¸Å¿ù)">¿ø°Ý(¸Å¿ù)</option>
-									<option value="¿ø°Ý(°Ý¿ù)">¿ø°Ý(°Ý¿ù)</option>
-									<option value="¿ø°Ý(ºÐ±â)">¿ø°Ý(ºÐ±â)</option>
-									<option value="¿ø°Ý(¹Ý±â)">¿ø°Ý(¹Ý±â)</option>
-									<option value="¹æ¹®(¸Å¿ù),¿ø°Ý(ºÐ±â)">¹æ¹®(¸Å¿ù),¿ø°Ý(ºÐ±â)</option>
-									<option value="¹æ¹®(¸Å¿ù),¿ø°Ý(¹Ý±â)">¹æ¹®(¸Å¿ù),¿ø°Ý(¹Ý±â)</option>
-									<option value="¹æ¹®(ºÐ±â),¿ø°Ý(¸Å¿ù)">¹æ¹®(ºÐ±â),¿ø°Ý(¸Å¿ù)</option>
-									<option value="¹æ¹®(ºÐ±â),¿ø°Ý(¹Ý±â)">¹æ¹®(ºÐ±â),¿ø°Ý(¹Ý±â)</option>
-									<option value="¹æ¹®(¹Ý±â),¿ø°Ý(¸Å¿ù)">¹æ¹®(¹Ý±â),¿ø°Ý(¸Å¿ù)</option>
-									<option value="¹æ¹®(¹Ý±â),¿ø°Ý(ºÐ±â)">¹æ¹®(¹Ý±â),¿ø°Ý(ºÐ±â)</option>
-									<option value="¹æ¹®(°Ý¿ù),¿ø°Ý(°Ý¿ù)">¹æ¹®(°Ý¿ù),¿ø°Ý(°Ý¿ù)</option>
+									<option value="ë°©ë¬¸(ë§¤ì›”)">ë°©ë¬¸(ë§¤ì›”)</option>
+									<option value="ë°©ë¬¸(ê²©ì›”)">ë°©ë¬¸(ê²©ì›”)</option>
+									<option value="ë°©ë¬¸(ë¶„ê¸°)">ë°©ë¬¸(ë¶„ê¸°)</option>
+									<option value="ë°©ë¬¸(ë°˜ê¸°)">ë°©ë¬¸(ë°˜ê¸°)</option>
+									<option value="ì›ê²©(ë§¤ì›”)">ì›ê²©(ë§¤ì›”)</option>
+									<option value="ì›ê²©(ê²©ì›”)">ì›ê²©(ê²©ì›”)</option>
+									<option value="ì›ê²©(ë¶„ê¸°)">ì›ê²©(ë¶„ê¸°)</option>
+									<option value="ì›ê²©(ë°˜ê¸°)">ì›ê²©(ë°˜ê¸°)</option>
+									<option value="ë°©ë¬¸(ë§¤ì›”),ì›ê²©(ë¶„ê¸°)">ë°©ë¬¸(ë§¤ì›”),ì›ê²©(ë¶„ê¸°)</option>
+									<option value="ë°©ë¬¸(ë§¤ì›”),ì›ê²©(ë°˜ê¸°)">ë°©ë¬¸(ë§¤ì›”),ì›ê²©(ë°˜ê¸°)</option>
+									<option value="ë°©ë¬¸(ë¶„ê¸°),ì›ê²©(ë§¤ì›”)">ë°©ë¬¸(ë¶„ê¸°),ì›ê²©(ë§¤ì›”)</option>
+									<option value="ë°©ë¬¸(ë¶„ê¸°),ì›ê²©(ë°˜ê¸°)">ë°©ë¬¸(ë¶„ê¸°),ì›ê²©(ë°˜ê¸°)</option>
+									<option value="ë°©ë¬¸(ë°˜ê¸°),ì›ê²©(ë§¤ì›”)">ë°©ë¬¸(ë°˜ê¸°),ì›ê²©(ë§¤ì›”)</option>
+									<option value="ë°©ë¬¸(ë°˜ê¸°),ì›ê²©(ë¶„ê¸°)">ë°©ë¬¸(ë°˜ê¸°),ì›ê²©(ë¶„ê¸°)</option>
+									<option value="ë°©ë¬¸(ê²©ì›”),ì›ê²©(ê²©ì›”)">ë°©ë¬¸(ê²©ì›”),ì›ê²©(ê²©ì›”)</option>
 								</select>
 							</c:when>
 							<c:otherwise>
 								<select id="condition" onchange="selectCondition(this.value)">
-									<option value="">¼±ÅÃ</option>
-									<option value="V">¹æ¹®</option>
-									<option value="R">¿ø°Ý</option>
+									<option value="">ì„ íƒ</option>
+									<option value="V">ë°©ë¬¸</option>
+									<option value="R">ì›ê²©</option>
 								</select>
 							</c:otherwise>
 						</c:choose>
@@ -146,17 +146,17 @@ td {
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">´ã´çÀÚ(Á¤)</td>
+					<td id="boardTitle">ë‹´ë‹¹ìž(ì •)</td>
 					<td id="dataField">
 						<select id="inspector">
 							<option value="${mainConSubVo.main_oper_nm}">${mainConSubVo.main_oper_nm}</option>
 							<!--
-							<option value="±èÃ¢ÈÖ">±èÃ¢ÈÖ</option>
-							<option value="Á¤¸¸¿µ">Á¤¸¸¿µ</option>
-							<option value="±è¼ºÁø">±è¼ºÁø</option>
-							<option value="ÀÌ¿ë¹Ì">ÀÌ¿ë¹Ì</option>
-							<option value="¹Úµ¿À±">¹Úµ¿À±</option>
-							<option value="±è½ÂÈÆ">±è½ÂÈÆ</option>
+							<option value="ê¹€ì°½íœ˜">ê¹€ì°½íœ˜</option>
+							<option value="ì •ë§Œì˜">ì •ë§Œì˜</option>
+							<option value="ê¹€ì„±ì§„">ê¹€ì„±ì§„</option>
+							<option value="ì´ìš©ë¯¸">ì´ìš©ë¯¸</option>
+							<option value="ë°•ë™ìœ¤">ë°•ë™ìœ¤</option>
+							<option value="ê¹€ìŠ¹í›ˆ">ê¹€ìŠ¹í›ˆ</option>
 							-->
 							<c:forEach var="member" items="${memberList}">
                                                			<option value="${member.cub_name}">${member.cub_name}</option>
@@ -165,17 +165,17 @@ td {
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">´ã´çÀÚ(ºÎ)</td>
+					<td id="boardTitle">ë‹´ë‹¹ìž(ë¶€)</td>
 					<td id="dataField">
 						<select id="inspector1">
 							<option value="${mainConSubVo.sub_oper_nm}">${mainConSubVo.sub_oper_nm}</option>
 							<!--
-							<option value="±èÃ¢ÈÖ">±èÃ¢ÈÖ</option>
-							<option value="Á¤¸¸¿µ">Á¤¸¸¿µ</option>
-							<option value="±è¼ºÁø">±è¼ºÁø</option>
-							<option value="ÀÌ¿ë¹Ì">ÀÌ¿ë¹Ì</option>
-							<option value="¹Úµ¿À±">¹Úµ¿À±</option>
-							<option value="±è½ÂÈÆ">±è½ÂÈÆ</option>
+							<option value="ê¹€ì°½íœ˜">ê¹€ì°½íœ˜</option>
+							<option value="ì •ë§Œì˜">ì •ë§Œì˜</option>
+							<option value="ê¹€ì„±ì§„">ê¹€ì„±ì§„</option>
+							<option value="ì´ìš©ë¯¸">ì´ìš©ë¯¸</option>
+							<option value="ë°•ë™ìœ¤">ë°•ë™ìœ¤</option>
+							<option value="ê¹€ìŠ¹í›ˆ">ê¹€ìŠ¹í›ˆ</option>
 							-->
 							<c:forEach var="member" items="${memberList}">
                                                                 <option value="${member.cub_name}">${member.cub_name}</option>                                       
@@ -184,28 +184,28 @@ td {
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">Á¡°ËÀÏÀÚ</td>
+					<td id="boardTitle">ì ê²€ì¼ìž</td>
 					<td id="dataField">
 						<c:if test="${type == 'MONTH'}">
 							<select id="originDate">
-								<option value="">¼±ÅÃ</option>
+								<option value="">ì„ íƒ</option>
 								<c:forEach var="vo" items="${list}">
 									<option value="${vo.job_date}">${vo.job_date}</option>	
 								</c:forEach>
-							</select> ¡æ 
+							</select> â†’ 
 						</c:if>
 						<input type="date" id="date" value="${currDate}">
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">¼öÁ¤ »çÀ¯</td>
+					<td id="boardTitle">ìˆ˜ì • ì‚¬ìœ </td>
 					<td>
 						<textarea id="job_reason" rows="5" cols="40"></textarea>
 					</td>
 				</tr>
 			</table>
 				<br>
-				<!-- µ¥ÀÌÅÍ ÀÔ·Â½Ã °¡Á®°¥ °ªµé -->
+				<!-- ë°ì´í„° ìž…ë ¥ì‹œ ê°€ì ¸ê°ˆ ê°’ë“¤ -->
 				<input id="con_id" type="hidden" value="${con_id}">
 				<input id="con_year" type="hidden" value="${con_year}">
 				<input type="hidden" id="from" value="${mainConSubVo.con_from_date}">
@@ -216,15 +216,15 @@ td {
 				
 				<c:choose>
 					<c:when test="${type == 'ALL'}">
-						<input id="" type="button" value="¼öÁ¤" onclick="updateCheckAll('../../controller/allDataUpdate.jsp')">
+						<input id="" type="button" value="ìˆ˜ì •" onclick="updateCheckAll('../../controller/allDataUpdate.jsp')">
 						<input id="check_nm" type="hidden" value="${mainConSubVo.check_nm}">
 					</c:when>
 					<c:otherwise>
-						<input id="submitButton" type="button" value="¼öÁ¤" onclick="updateCheckMonth('../../controller/monthDataUpdate.jsp')">
+						<input id="submitButton" type="button" value="ìˆ˜ì •" onclick="updateCheckMonth('../../controller/monthDataUpdate.jsp')">
 						<input id="check_nm" type="hidden" value="">
 					</c:otherwise>
 				</c:choose>
-				<input id="resetButton" type="button" value="Ãë¼Ò" onclick="eventReset()">
+				<input id="resetButton" type="button" value="ì·¨ì†Œ" onclick="eventReset()">
 		</form>
 	</div>
 </body>

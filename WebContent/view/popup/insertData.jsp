@@ -1,13 +1,13 @@
 <%@page import="com.cubrid.util.date.MyDate"%>
 <%@page import="com.cubrid.checkup.vo.MainConSubVo"%>
 <%@page import="com.cubrid.checkup.service.CheckUpServiceImpl"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>�������� ���� ���</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>정기점검 일정 등록</title>
 <style type="text/css">
 #submitButton {
 	text-align: center;
@@ -54,7 +54,7 @@ td {
 %>
 	<c:if test="${mainConSubVo.upd_date != null }">
 		<script type="text/javascript">
-			alert("�̹� ��ϵǾ� �ֽ��ϴ�.");
+			alert("이미 등록되어 있습니다.");
 			window.close();
 		</script>
 	</c:if>
@@ -65,25 +65,25 @@ td {
 		<form id="form1" action="" method="get">
 			<table id="tb1">
 				<tr>
-					<td id="boardTitle">������</td>
+					<td id="boardTitle">고객사</td>
 					<td id="dataField">
 						${mainConSubVo.cust_nm}
 						<input type="hidden" id="customer" value="${mainConSubVo.cust_nm}">
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">�����</td>
+					<td id="boardTitle">사업명</td>
 					<td id="dataField">
 						${mainConSubVo.proc_nm}
 						<input type="hidden" id="project" value="${mainConSubVo.proc_nm}">
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">���Ⱓ</td>
+					<td id="boardTitle">계약기간</td>
 					<td id="dataField">${mainConSubVo.con_from_date} ~ ${mainConSubVo.con_to_date}</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">��������</td>
+					<td id="boardTitle">점검조건</td>
 					<td id="dataField">
 						<c:choose>
 							<c:when test="${mainConSubVo.check_nm != null}">
@@ -93,29 +93,29 @@ td {
 							</c:when>
 							<c:otherwise>
 								<select id="condition">
-									<option value="">����</option>
-									<option value="�湮(�ſ�)">�湮(�ſ�)</option>
-									<option value="�湮(�ݿ�)">�湮(�ݿ�)</option>
-									<option value="�湮(�б�)">�湮(�б�)</option>
-									<option value="�湮(�ݱ�)">�湮(�ݱ�)</option>
-									<option value="����(�ſ�)">����(�ſ�)</option>
-									<option value="����(�ݿ�)">����(�ݿ�)</option>
-									<option value="����(�б�)">����(�б�)</option>
-									<option value="����(�ݱ�)">����(�ݱ�)</option>
-									<option value="�湮(�ſ�),����(�б�)">�湮(�ſ�),����(�б�)</option>
-									<option value="�湮(�ſ�),����(�ݱ�)">�湮(�ſ�),����(�ݱ�)</option>
-									<option value="�湮(�б�),����(�ſ�)">�湮(�б�),����(�ſ�)</option>
-									<option value="�湮(�б�),����(�ݱ�)">�湮(�б�),����(�ݱ�)</option>
-									<option value="�湮(�ݱ�),����(�ſ�)">�湮(�ݱ�),����(�ſ�)</option>
-									<option value="�湮(�ݱ�),����(�б�)">�湮(�ݱ�),����(�б�)</option>
-									<option value="�湮(�ݿ�),����(�ݿ�)">�湮(�ݿ�),����(�ݿ�)</option>
+									<option value="">선택</option>
+									<option value="방문(매월)">방문(매월)</option>
+									<option value="방문(격월)">방문(격월)</option>
+									<option value="방문(분기)">방문(분기)</option>
+									<option value="방문(반기)">방문(반기)</option>
+									<option value="원격(매월)">원격(매월)</option>
+									<option value="원격(격월)">원격(격월)</option>
+									<option value="원격(분기)">원격(분기)</option>
+									<option value="원격(반기)">원격(반기)</option>
+									<option value="방문(매월),원격(분기)">방문(매월),원격(분기)</option>
+									<option value="방문(매월),원격(반기)">방문(매월),원격(반기)</option>
+									<option value="방문(분기),원격(매월)">방문(분기),원격(매월)</option>
+									<option value="방문(분기),원격(반기)">방문(분기),원격(반기)</option>
+									<option value="방문(반기),원격(매월)">방문(반기),원격(매월)</option>
+									<option value="방문(반기),원격(분기)">방문(반기),원격(분기)</option>
+									<option value="방문(격월),원격(격월)">방문(격월),원격(격월)</option>
 								</select>
 							</c:otherwise>
 						</c:choose>
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">(��)�����</td>
+					<td id="boardTitle">(정)담당자</td>
 					<td id="dataField">
 						<c:choose>
 							<c:when test="${mainConSubVo.main_oper_nm != null}">
@@ -125,20 +125,20 @@ td {
 							</c:when>
 							<c:otherwise>
 								<select id="inspector">
-									<option value="">����</option>
-									<option value="��â��">��â��</option>
-									<option value="������">������</option>
-									<option value="�輺��">�輺��</option>
-									<option value="�̿��">�̿��</option>
-									<option value="�ڵ���">�ڵ���</option>
-									<option value="�����">�����</option>
+									<option value="">선택</option>
+									<option value="김창휘">김창휘</option>
+									<option value="정만영">정만영</option>
+									<option value="김성진">김성진</option>
+									<option value="이용미">이용미</option>
+									<option value="박동윤">박동윤</option>
+									<option value="김승훈">김승훈</option>
 								</select>
 							</c:otherwise>
 						</c:choose>
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">(��)�����</td>
+					<td id="boardTitle">(부)담당자</td>
 					<td id="dataField">
 						<c:choose>
 							<c:when test="${mainConSubVo.main_oper_nm != null}">
@@ -148,34 +148,34 @@ td {
 							</c:when>
 							<c:otherwise>
 								<select id="inspector1">
-									<option value="">����</option>
-									<option value="��â��">��â��</option>
-									<option value="������">������</option>
-									<option value="�輺��">�輺��</option>
-									<option value="�̿��">�̿��</option>
-									<option value="�ڵ���">�ڵ���</option>
-									<option value="�����">�����</option>
+									<option value="">선택</option>
+									<option value="김창휘">김창휘</option>
+									<option value="정만영">정만영</option>
+									<option value="김성진">김성진</option>
+									<option value="이용미">이용미</option>
+									<option value="박동윤">박동윤</option>
+									<option value="김승훈">김승훈</option>
 								</select>
 							</c:otherwise>
 						</c:choose>
 					</td>
 				</tr>
 				<tr>
-					<td id="boardTitle">��������</td>
+					<td id="boardTitle">점검일자</td>
 					<td id="dataField">
 						<input type="date" id="date" value="${currDate}">
 					</td>
 				</tr>
 			</table>
 				<br>
-				<!-- ������ �Է½� ������ ���� -->
+				<!-- 데이터 입력시 가져갈 값들 -->
 				<input id="con_id" type="hidden" value="${con_id}">
 				<input id="con_year" type="hidden" value="${mainConSubVo.con_year}">
 				<input type="hidden" id="from" value="${mainConSubVo.con_from_date}">
 				<input type="hidden" id="to" value="${mainConSubVo.con_to_date}">
 				
-				<input id="submitButton" type="button" value="���" onclick="insertCheckAndSubmit('../../controller/checkInsertAll.jsp')">
-				<input id="resetButton" type="button" value="���" onclick="eventReset()">
+				<input id="submitButton" type="button" value="등록" onclick="insertCheckAndSubmit('../../controller/checkInsertAll.jsp')">
+				<input id="resetButton" type="button" value="취소" onclick="eventReset()">
 		</form>
 	</div>
 </body>
